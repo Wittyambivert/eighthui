@@ -1,0 +1,634 @@
+$light-purple: #abbdf9;
+$purple: #a057f6;
+// $dark-blue: #4d4cac;
+$dark-blue: #250083;
+$blue: #6500fe;
+$orange: #ff808b;
+$black: #3d3d4e;
+$grey: #e0dfdf;
+
+@mixin progress($color1, $range1) {
+    background-image: linear-gradient(to right, $color1 0% $range1, #ccc $range1 100%);
+    width: 7rem;
+    height: 0.5rem;
+    border-radius: 50px;
+    margin-right: 1rem;
+}
+@mixin arrange() {
+    width: 0.5rem;
+    height: 20rem;
+    border-radius: 50px;
+}
+@mixin progress2($color1, $color2, $p1, $p2, $p3) {
+    @include arrange();
+    background-image: linear-gradient(to top, $color1 $p1 $p2, $color2 $p2 $p3)
+}
+@mixin progress3($color1, $color2, $color3, $p1, $p2, $p3, $p4) {
+    @include arrange();
+    background-image: linear-gradient(to top, $color1 $p1 $p2, $color2 $p2 $p3, $color3 $p3 $p4);
+}
+@mixin progress4($color1, $color2, $color3, $color4, $p1, $p2, $p3, $p4, $p5) {
+    @include arrange();
+    // background-image: linear-gradient(to top, $dark-blue 0% 45%, $orange 45% 70%, #ccc 70% 100%);
+    background-image: linear-gradient(to top, $color1 $p1 $p2, $color2 $p2 $p3, $color3 $p3 $p4, $color4 $p4 $p5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    font-family: montserrat;
+    font-size: 62.5%;
+    background: #f3f3f3;
+}
+.body-container {
+    // margin: 5rem 4rem;
+    display: flex;
+
+    .body-left {
+        width: 18vw;
+        background: white;
+        padding: 5rem 0;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10rem;
+            margin-left: 5rem;
+            
+
+            .logo {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 5px;
+                background-color: $blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 2rem;
+
+                p {
+                    color: white;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    
+                }
+                
+            }
+            & > p {
+                  color: $black;
+                  font-size: 2rem;
+                  font-weight: bold;
+
+
+                }
+        }
+        &__main {
+            margin: 0 0 10rem 5rem;
+
+            .flee {
+                display: flex;
+                align-items: center;
+                margin-bottom: 3rem;
+                color: lighten(black, 30%);
+                font-size: 1.5rem;
+
+                &:hover {
+                    color: $black;
+                    font-weight: bold;
+                    border-right: 2px solid $blue;
+                    font-size: 1.6rem;
+                }
+            }
+            p {
+                // font-size: 1.5rem;
+            }
+            .fa {
+                font-size: 2.5rem;
+                margin-right: 1.8rem;
+            }
+        }
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            // justify-content: space-between;
+            align-items: center;
+            background: lighten(#ccc, 15%);
+            border-radius: 15px;
+            width: 20rem;
+            height: 23rem;
+            padding: 2rem;
+            margin: 0 2rem;
+
+            img {
+                width: 35%;
+                height: 35%;
+                position: relative;
+                bottom: 5.5rem;
+            }
+            p {
+                font-size: 1.4rem;
+                // align-self: center;
+                text-align: center;
+                margin-bottom: 3.5rem;
+
+                .bold {
+                    font-weight: bold;
+                }
+                .small {
+                    font-size: 1rem;
+                }
+            }
+            button {
+                border: none;
+                border-radius: 8px;
+                background: $blue;
+                color: white;
+                font-family: inherit;
+                font-size: 1.3rem;
+                width: 13rem;
+                height: 4rem;
+            }
+
+        }
+    }
+    .body-center {
+        width: 60vw;
+        padding: 0 3rem;
+        padding-top: 5rem;
+        // background: yellow;
+        
+        &__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+
+            h2 {
+                font-size: 2rem;
+                color: $black;
+                margin-right: auto;
+            }
+            .date {
+                font-size: 1.4rem;
+                color: lighten($black, 10%);
+                margin-right: 2rem;
+            }
+            .search {
+                width: 3rem;
+                height: 3rem;
+                background: lighten($light-purple, 10%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $blue;
+                font-size: 1.6rem;
+                border-radius: 5px;
+            }
+        }
+        &__title {
+            width: 100%;
+            background: lighten($orange, 20%);
+            height: 20rem;
+            border-radius: 2rem;
+            padding: 5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+
+            .copy {
+                h3 {
+                    font-size: 2rem;
+                    margin-bottom: 2rem;
+                    color: $orange;
+                }
+                p {
+                font-size: 1.3rem;
+                color: $black;
+                }
+            }
+            img {
+                width: 50/100 * 471px;
+                height: 50/100 * 403px;
+                position: relative;
+                bottom: 8rem;
+            }
+        }
+        &__main {
+            width: 100%;
+            height: 30rem;
+            display: flex;
+            margin-bottom: 12rem;
+
+            &--lt {
+                height: 38rem;
+                width: 33rem;
+                background: white;
+                margin-right: auto;
+                border-radius: 2rem;
+                padding: 3rem 1.8rem;
+
+                .lt__heading {
+                    display: flex;
+                    align-items: center;
+                    // padding: 2rem 1.8rem;
+                    font-size: 1.2rem;
+                    margin-bottom: 4rem;
+
+                    h4 {
+                        margin-right: auto;
+                        font-weight: bold;
+                    }
+                    p {
+                        margin-right: 1rem;
+                    }
+                }
+                .progress-bars {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    margin-bottom: 4rem;
+
+                    .progress-bar {
+                        &.unit1 {
+                            @include progress(red, 30%);
+                        }
+                        &.unit2 {
+                            @include progress($blue, 44%);
+                        }
+                        &.unit3 {
+                            @include progress($blue, 49%);
+                        }
+                        &.unit4 {
+                            @include progress(red, 18%);
+                        }
+                        &.unit5 {
+                            @include progress($blue, 78%);
+                        }
+
+                    }
+                    p {
+                        &:first-of-type {
+                            margin-right: auto;
+
+                            .faint {
+                                color: #ccc;
+                            }
+                        }
+                        &:last-of-type {
+                            color: red;
+                        }
+                        
+                    }
+                }
+                
+            }
+            &--rt {
+                height: 38rem;
+                width: 41rem;
+                border-radius: 2rem;
+                background: white;
+                padding: 3rem 1.8rem;
+
+                .rt__heading {
+                    display: flex;
+                    align-items: center;
+                    // padding: 2rem 1.8rem;
+                    font-size: 1.2rem;
+                    margin-bottom: 4rem;
+
+                    h4 {
+                        margin-right: auto;
+                        font-weight: bold;
+                    }
+                    p {
+                        margin-right: 1rem;
+                    }
+                }
+                .multi-progress-bars {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.1rem;
+                    margin-bottom: 3rem;
+
+                    .attach {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        width: 4rem;
+                        margin-right: 2rem;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        h4 {
+                            font-size: 1.1rem;
+                            color: #ccc;
+                            margin-bottom: 2rem;
+                        }
+                        .mon {
+                            // @include progress3($dark-blue, 0%, 45%, $orange, 45%, 70%, #ccc, 70%, 100%);
+                            @include progress3($dark-blue, $orange, #ccc, 0%, 45%, 70%, 100%);
+                        }
+                        .tues {
+                            @include progress2($blue, $orange, 0%, 90%, 100%);
+                        }
+                        .wed {
+                            @include progress3($blue, $dark-blue, #ccc, 0%, 40%, 80%, 100%);
+                        }
+                        .thurs {
+                            @include progress2($blue, $orange, 0%, 70%, 100%);
+                        }
+                        .fri {
+                            @include progress2(#ccc, $orange, 0%, 80%, 100%);
+                        }
+                        .sat {
+                            @include progress2($blue, $dark-blue, 0%, 40%, 100%);
+                        }
+                        .sun {
+                            @include progress3($blue, $dark-blue, $orange, 0%, 40%, 70%, 100%);
+                        }
+                    }
+                }
+                .keys {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    .key {
+                        display: flex;
+                        align-items: center;
+                        font-size: 1rem;
+                        color: #ccc;
+                        margin-right: 2rem;
+
+                        // &:last-child {
+                        //     margin-left: 0;
+                        // }
+
+                        
+                        .key-set {
+                            width: 1rem;
+                            height: 1rem;
+                            border-radius: 50%;
+                            margin-right: 0.8rem;
+                        }
+                        .orange {
+                            background-color: $orange;
+                        }
+                        .dark-blue {
+                            background-color: $dark-blue;
+                        }
+                        .blue {
+                            background-color: $blue;
+                        }
+                        .grey {
+                            background-color: #ccc;
+                        }
+
+
+                    }
+                }
+            }
+        }
+        &__footer {
+            
+            .footer-header {
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+                
+                h3 {
+                    margin-right: auto;
+                }
+                p {
+                    margin-right: 2rem;
+                }
+            }
+            .footer-cards {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 4rem;
+
+                .footer-card {
+                    display: flex;
+                    align-items: center;
+                    padding: 1.5rem;
+                    width: 24rem;
+                    height: 7rem;
+                    background-color: $dark-blue;
+                    border-radius: 1rem;
+                    
+                    .small-box {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 1.2rem;
+                        width: 4rem;
+                        height: 4rem;
+                        background-color: lighten($dark-blue, 10%);
+                        color: white;
+                        margin-right: 1rem;
+                        border-radius: 0.6rem;
+                    }
+                    .content {
+                        margin-right: auto;
+                        p {
+                            color: white;
+                            &:first-child {
+                                font-size: 1rem;
+                                margin-bottom: 1rem;
+                            }
+                            &:last-child {
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    .fa-angle-right {
+                        color: white;
+                        font-size: 1.2rem;
+                        align-self: flex-end;
+                    }
+
+                    &.card2 {
+                        background-color: $purple;
+                        .small-box {
+                            background-color: lighten($purple, 10%);
+                        }
+                    }
+                    &.card3 {
+                        background-color: $orange;
+                        .small-box {
+                            background-color: lighten($orange, 10%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .body-right {
+        width: 22vw;
+        background: white;
+        padding: 6rem 2rem;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+
+            h3 {
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+            .fa-arrow-right {
+                font-size: 1.3rem;
+            }
+        }
+        &__avatar {
+
+            .avatar-main {
+                // display: flex;
+                // justify-content: center;
+                text-align: center;
+
+                img {
+                    width: 50%;
+                    height: 50%;
+                    // margin-bottom: 2rem;
+                }
+                .plus {
+                    width: 2rem;
+                    height: 2rem;
+                    background-color: $blue;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    font-size: 1rem;
+                    position: relative;
+                    bottom: 4.5rem;
+                    left: 16rem;
+                }
+            }
+            .avatar-description {
+                // display: flex;
+                // align-items: center;
+                text-align: center;
+                p {
+                    &:first-child {
+                        color: $black;
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                        margin-bottom: 1rem;
+                    }
+                    &:last-child {
+                        color: #ccc;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+            
+        }
+        &__center {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+            .one {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+
+                .boxed {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 4rem;
+                    height: 4rem;
+                    border-radius: 0.5rem;
+                    background-color: #f3f3f3;
+                    color: $black;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                }
+                .content {
+                    p {
+                        &:first-child {
+                            font-weight: bold;
+                            font-size: 1.2rem;
+                        }
+                        &:last-child {
+                            font-size: 1rem;
+                            color: #ccc;
+                        }
+                    }
+                }
+                .progress-barj {
+                    width: 8rem;
+                    height: 0.5rem;
+                    border-radius: 5rem;
+                    background-image: linear-gradient(to right, $blue 0% 60%, #ccc 60% 100%);
+                }
+            }
+        }
+        &__footer {
+
+            .footer-heading {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                p {
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    margin-right: auto;
+                }
+                .fa-bell {
+                    font-size: 1.3rem;
+                }
+            }
+            .one {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+
+                .boxed {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 4rem;
+                    height: 4rem;
+                    border-radius: 0.5rem;
+                    background-color: #f3f3f3;
+                    color: $black;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    margin-right: 2rem;
+                }
+                .content {
+                    p {
+                        &:first-child {
+                            font-weight: bold;
+                            font-size: 1.2rem;
+                        }
+                        &:last-child {
+                            font-size: 1rem;
+                            color: #ccc;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
