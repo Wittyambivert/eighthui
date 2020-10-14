@@ -10,6 +10,8 @@
 *~
 *.sass-cache
 *eightui.css.map
+
+# Folders
 node_modules/
 .tmp/
 image-main/
