@@ -12,7 +12,7 @@
 *eightui.css.map
 node_modules/
 .tmp/
-images/
+image-main/
 
 # OS or Editor folders
 .DS_Store
